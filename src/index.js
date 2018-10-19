@@ -6,14 +6,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createBrowserHistory } from 'history';
+import AppRouter from './routes'
 
 const history = createBrowserHistory();
 
 const store = configureStore();
 ReactDOM.render(
-    <Provider store={store}>
-        <App history={history}/>
-    </Provider>, 
+    <App history={history} store={store} routerSchema={AppRouter}/>,
     document.getElementById('root'));
 
 
