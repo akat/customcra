@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import "./css/module.css";
 
 class Calendar extends Component {
   state = {
     module: "home"
-  }
+  };
 
   render() {
-  	return (
-  		<div> Calendar </div>
-  	)
+    return (
+      <div>
+        <h1>Calendar</h1>
+      </div>
+    );
   }
-
 }
 
 const mapStateToProps = state => ({
@@ -24,6 +24,4 @@ const mapStateToProps = state => ({
 //   simpleAction: () => dispatch(simpleAction())
 // });
 
-export default connect(
-  mapStateToProps
-)(Calendar);
+export default connect(mapStateToProps)(Calendar);

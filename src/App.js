@@ -1,38 +1,10 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { simpleAction } from "./store/actions/simpleAction";
-
-import "./App.css";
+import AppRoute from "./app.route";
 
 class App extends Component {
-  state = {
-    default: true
-  }
-  
-  simpleAction = event => {
-    this.props.simpleAction();
-  };
-
   render() {
-    return (
-      <div className="App">
-        <button onClick={this.simpleAction}>Test redux action</button>
-
-        <pre>{JSON.stringify(this.props)}</pre>
-      </div>
-    );
+    return <AppRoute />;
   }
 }
 
-const mapStateToProps = state => ({
-  ...state
-});
-
-const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;

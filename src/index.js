@@ -5,14 +5,13 @@ import configureStore from './store';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createBrowserHistory } from 'history';
-import AppRouter from './routes'
-
-const history = createBrowserHistory();
 
 const store = configureStore();
+
 ReactDOM.render(
-    <App history={history} store={store} routerSchema={AppRouter}/>,
+    <Provider store={store} >
+        <App />        
+    </Provider>,
     document.getElementById('root'));
 
 
