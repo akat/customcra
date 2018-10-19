@@ -1,9 +1,12 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+//Layouts
+import DefaultLayout from './layouts/DefaultLayout'
+
+//Components
 import Dashboard from './modules/dashboard'
 import Calendar from './modules/calendar'
-import { createBrowserHistory } from 'history';
-import DefaultLayout from './layouts/DefaultLayout'
 
 const history = createBrowserHistory();
 

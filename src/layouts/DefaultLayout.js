@@ -1,16 +1,16 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Menu = props => {
     return (
       <nav>
-        <NavLink className="main-anchor" to="/calendar">
+        <Link className="main-anchor" to="/calendar">
           Calendar
-        </NavLink>
-        <NavLink className="main-anchor" to="/">
+        </Link>
+        <Link className="main-anchor" to="/">
           Dashboard
-        </NavLink>
+        </Link>
       </nav>
     );
   };

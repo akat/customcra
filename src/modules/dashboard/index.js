@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { simpleAction } from "../../store/actions/simpleAction";
+import DashboardRouter from "./routes";
+import { Link } from "react-router-dom";
+
 import "./css/module.css";
 
 class Dashboard extends Component {
@@ -18,6 +21,16 @@ class Dashboard extends Component {
         <h1>Dashboard</h1>
         <button onClick={this.simpleAction}>Test redux action</button>
         <pre>{JSON.stringify(this.props)}</pre>
+
+        <nav>
+          <Link className="main-anchor" to="/dashboard/demo1">
+            demo1
+          </Link>
+          <Link className="main-anchor" to="/dashboard/demo2">
+            demo2
+          </Link>
+        </nav>
+        <DashboardRouter />
       </div>
     );
   }
