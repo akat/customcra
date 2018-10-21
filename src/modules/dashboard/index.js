@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { simpleAction } from "../../store/actions/simpleAction";
-import { Link } from "react-router-dom";
 import "./css/module.css";
 
 class Dashboard extends Component {
