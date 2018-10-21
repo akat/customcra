@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { simpleAction } from "../../store/actions/simpleAction";
-import DashboardRouter from "./routes";
 import { Link } from "react-router-dom";
-
 import "./css/module.css";
 
 class Dashboard extends Component {
@@ -19,9 +17,8 @@ class Dashboard extends Component {
     return (
       <div>
         <h1>Dashboard</h1>
-        <button onClick={this.simpleAction}>Test redux action</button>
-        <pre>{JSON.stringify(this.props)}</pre>
-
+        {/* <button onClick={this.simpleAction}>Test redux action</button>
+        <pre>{JSON.stringify(this.props)}</pre> */}
         <nav>
           <Link className="main-anchor" to="/dashboard/demo1">
             demo1
@@ -30,7 +27,6 @@ class Dashboard extends Component {
             demo2
           </Link>
         </nav>
-        <DashboardRouter />
       </div>
     );
   }

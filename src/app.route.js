@@ -1,22 +1,21 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { Switch } from 'react-router-dom';
 //Layouts
 import DefaultLayout from './layouts/DefaultLayout'
 
 //Components
-import Dashboard from './modules/dashboard'
+import Home from './modules/dashboard'
+import Dashboard from './modules/dashboard/routes'
 import Calendar from './modules/calendar'
 
-const history = createBrowserHistory();
-
-export default class AppRouter extends React.Component {
-	render(){
-		return (
-			<Router history={history}>
-				<DefaultLayout path="/" exact={true} component={Dashboard}/>
-				<DefaultLayout path="/calendar" component={Calendar}/>
-			</Router>
-		)	
-	}
+const AppRouter = () => {
+	return (
+		<Switch>
+			<DefaultLayout path="/" exact={true} component={Home}/>
+			<DefaultLayout path="/dashboard" component={Dashboard}/>
+			<DefaultLayout path="/calendar" component={Calendar}/>
+		</Switch>
+	)	
 }
+
+export default AppRouter

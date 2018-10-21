@@ -8,7 +8,7 @@ const Menu = props => {
         <Link className="main-anchor" to="/calendar">
           Calendar
         </Link>
-        <Link className="main-anchor" to="/">
+        <Link className="main-anchor" to="/dashboard">
           Dashboard
         </Link>
       </nav>
@@ -21,7 +21,7 @@ const DefaultLayout = ({component: Component, ...rest}) => {
         <Route {...rest} render={matchProps => (
           <div className="DefaultLayout">
             <Menu />
-            <Component {...matchProps} />
+              <Component {...matchProps} />
             <div className="Footer">Footer</div>
           </div>
         )} />
