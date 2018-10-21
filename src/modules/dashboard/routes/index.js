@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import DashMainLayout from "../layouts/main"
 import Dashboard from "../index"
 import Demo1 from "../components/demo1"
