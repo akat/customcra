@@ -16,17 +16,8 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Dashboard</h1>
-        {/* <button onClick={this.simpleAction}>Test redux action</button>
-        <pre>{JSON.stringify(this.props)}</pre> */}
-        <nav>
-          <Link className="main-anchor" to="/dashboard/demo1">
-            demo1
-          </Link>
-          <Link className="main-anchor" to="/dashboard/demo2">
-            demo2
-          </Link>
-        </nav>
+        <button onClick={this.simpleAction}>Test redux action</button>
+        <pre>{JSON.stringify(this.props)}</pre>
       </div>
     );
   }
