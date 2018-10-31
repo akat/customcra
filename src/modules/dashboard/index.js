@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { simpleAction } from "../../store/actions/simpleAction";
+import { LoginAction, LogoutAction } from "../../store/actions/loginActions";
 import "./css/module.css";
 
 class Dashboard extends Component {
@@ -8,15 +8,17 @@ class Dashboard extends Component {
     module: "home"
   };
 
-  simpleAction = event => {
-    this.props.simpleAction();
+  changeLoginStatus = event => {
+    this.props.user.loginStatus
+      ? this.props.LogoutAction()
+      : this.props.LoginAction();
   };
 
   render() {
     return (
       <div>
-        <button onClick={this.simpleAction}>Test redux action</button>
-        <pre>{JSON.stringify(this.props)}</pre>
+        <button onClick={this.changeLoginStatus}>{ this.props.user.loginStatus ? ("Logout") : ("Login") }</button>
+        <pre>{JSON.stringify(this.props.user)}</pre>
       </div>
     );
   }
@@ -27,7 +29,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
+  LoginAction: () => dispatch(LoginAction()),
+  LogoutAction: () => dispatch(LogoutAction())
 });
 
 export default connect(

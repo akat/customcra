@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { simpleAction } from "../../store/actions/simpleAction";
+import { LoginAction } from "../../store/actions/loginActions";
 import "./css/module.css";
 import {
   Button,
@@ -108,7 +108,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
+  LoginAction: () => dispatch(LoginAction())
 });
 
 export default withStyles(styles)(connect(

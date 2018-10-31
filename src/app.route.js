@@ -11,7 +11,7 @@ import Calendar from './modules/calendar'
 import Login from './modules/login/routes'
 
 const AppRouter = () => {
-	const loginStatus = false;
+	const loginStatus = true;
 	return (
 		<Switch>
 			<DefaultLayout path="/" exact={true} component={Home} needAuthorization checkAuth={loginStatus}/>
