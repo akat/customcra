@@ -14,7 +14,6 @@ class Dashboard extends Component {
 
   render() {
     const { loginStatus } = this.props;
-    console.log(loginStatus);
     return (
       <div>
         <button onClick={this.changeLoginStatus}> Logout </button>
