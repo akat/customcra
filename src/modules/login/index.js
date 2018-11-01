@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { LoginAction } from "../../store/actions";
 import { Link } from 'react-router-dom';
+import { loginCheck } from './api'
 
 import "./css/module.css";
 import {
@@ -58,10 +59,17 @@ class Login extends Component {
   };
 
   changeLoginStatus = event => {
-    const { LoginAction, history } = this.props;
-    LoginAction();
-    history.push('/')
     event.preventDefault()
+    const { LoginAction, history } = this.props;
+
+    loginCheck({ username: 'akatsaris@gmail.com', pass: '948171'}).then((resp) => {
+      if(resp.loginStatus) {
+        LoginAction(resp);
+        history.push('/')  
+      }
+    }, (err)=> {
+      throw new Error(err);
+    })
   };
 
   render() {
@@ -118,7 +126,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  LoginAction: () => dispatch(LoginAction())
+  LoginAction: data => dispatch(LoginAction(data))
 });
 
 export default withStyles(styles)(connect(

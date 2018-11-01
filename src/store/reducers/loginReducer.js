@@ -7,7 +7,7 @@ export default (state = initialState, action) => {
     case "LOGIN":
       return {
         ...state,
-        loginStatus: true
+        ...action.payload
       }
     case "LOGOUT":
       return {
