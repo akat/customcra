@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { LoginAction } from "../../store/actions/loginActions";
+import { LoginAction, LogoutAction } from "../../store/actions/loginActions";
+
 import "./css/module.css";
 import {
   Button,
@@ -55,8 +56,16 @@ class Login extends Component {
     module: "Login"
   };
 
-  render() {
+  changeLoginStatus = event => {
+    this.props.loginStatus
+      ? this.props.LogoutAction()
+      : this.props.LoginAction();
+      
+      this.props.history.push('/')
+      event.preventDefault()
+  };
 
+  render() {
     const { classes } = this.props;
 
     return (
@@ -94,7 +103,8 @@ class Login extends Component {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-              >Sign in</Button>
+                onClick={this.changeLoginStatus}
+              >{ this.props.loginStatus ? ("Logout") : ("Login") }</Button>
             </form>
           </Paper>
         </main>
@@ -104,11 +114,12 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  ...state
+  ...state.user
 });
 
 const mapDispatchToProps = dispatch => ({
-  LoginAction: () => dispatch(LoginAction())
+  LoginAction: () => dispatch(LoginAction()),
+  LogoutAction: () => dispatch(LogoutAction())
 });
 
 export default withStyles(styles)(connect(
