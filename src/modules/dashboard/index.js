@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { LoginAction, LogoutAction } from "../../store/actions/loginActions";
+import { LogoutAction } from "../../store/actions/loginActions";
 import "./css/module.css";
 
 class Dashboard extends Component {
@@ -9,27 +9,26 @@ class Dashboard extends Component {
   };
 
   changeLoginStatus = event => {
-    this.props.user.loginStatus
-      ? this.props.LogoutAction()
-      : this.props.LoginAction();
+    this.props.LogoutAction();
   };
 
   render() {
+    const { loginStatus } = this.props;
+    console.log(loginStatus);
     return (
       <div>
-        <button onClick={this.changeLoginStatus}>{ this.props.user.loginStatus ? ("Logout") : ("Login") }</button>
-        <pre>{JSON.stringify(this.props.user)}</pre>
+        <button onClick={this.changeLoginStatus}> Logout </button>
+        <h3>User {loginStatus ? ("is Connected") : ("is not Connected")}</h3>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  ...state
+  ...state.user
 });
 
 const mapDispatchToProps = dispatch => ({
-  LoginAction: () => dispatch(LoginAction()),
   LogoutAction: () => dispatch(LogoutAction())
 });
 

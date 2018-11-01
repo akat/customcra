@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, withRouter } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { connect } from "react-redux";
 //Layouts
 import DefaultLayout from './layouts/DefaultLayout'
@@ -17,7 +17,7 @@ const AppRouter = ({loginStatus}) => {
 			<DefaultLayout path="/" exact={true} component={Home} needAuthorization checkAuth={loginStatus}/>
 			<DefaultLayout path="/dashboard" component={Dashboard} needAuthorization checkAuth={loginStatus}/>
 			<DefaultLayout path="/calendar" component={Calendar} needAuthorization checkAuth={loginStatus}/>
-			<EmptyLayout path="/login" component={Login} needAuthorization={false}/>
+			<EmptyLayout path="/login" component={Login} />
 		</Switch>
 	)	
 }
@@ -26,4 +26,4 @@ const mapStateToProps = state => ({
 	...state.user
 });
 
-export default withRouter(connect(mapStateToProps)(AppRouter))
+export default connect(mapStateToProps)(AppRouter)

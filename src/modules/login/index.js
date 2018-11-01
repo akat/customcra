@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { LoginAction, LogoutAction } from "../../store/actions/loginActions";
+import { LoginAction } from "../../store/actions/loginActions";
 import { Link } from 'react-router-dom';
 
 import "./css/module.css";
@@ -58,12 +58,10 @@ class Login extends Component {
   };
 
   changeLoginStatus = event => {
-    this.props.loginStatus
-      ? this.props.LogoutAction()
-      : this.props.LoginAction();
-      
-      this.props.history.push('/')
-      event.preventDefault()
+    const { LoginAction, history } = this.props;
+    LoginAction();
+    history.push('/')
+    event.preventDefault()
   };
 
   render() {
@@ -105,7 +103,7 @@ class Login extends Component {
                 color="primary"
                 className={classes.submit}
                 onClick={this.changeLoginStatus}
-              >{ this.props.loginStatus ? ("Logout") : ("Login") }</Button>
+              >Login</Button>
               <Link to="/login/resetpass">reset pass</Link>
             </form>
           </Paper>
@@ -120,8 +118,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  LoginAction: () => dispatch(LoginAction()),
-  LogoutAction: () => dispatch(LogoutAction())
+  LoginAction: () => dispatch(LoginAction())
 });
 
 export default withStyles(styles)(connect(
