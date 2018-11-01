@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { LoginAction, LogoutAction } from "../../store/actions/loginActions";
+import { Link } from 'react-router-dom';
 
 import "./css/module.css";
 import {
@@ -105,6 +106,7 @@ class Login extends Component {
                 className={classes.submit}
                 onClick={this.changeLoginStatus}
               >{ this.props.loginStatus ? ("Logout") : ("Login") }</Button>
+              <Link to="/login/resetpass">reset pass</Link>
             </form>
           </Paper>
         </main>
