@@ -18,8 +18,7 @@ const logout = (state, action) => {
   }
 }
 
-
 export default handleActions({
   [user.LoginAction]: login,
-  [user.LogoutAction]: logout
+  [user.LogoutAction]: logout,
 }, initialState);

@@ -54,12 +54,21 @@ const styles = theme => ({
 
 class Login extends Component {
   state = {
-    module: "Login"
+    module: "Login",
+    loading: false
   };
+
+  loading(status){
+    this.setState({
+      ...this.state,
+      loading: status
+    })
+  }
 
   componentDidUpdate(prevProps, prevState) {
     const {history, loginStatus } = this.props;
     if(loginStatus){
+      this.loading(false);
       history.push('/')
     }
   }
@@ -67,8 +76,8 @@ class Login extends Component {
   changeLoginStatus = event => {
     event.preventDefault()
     const { LoginAction } = this.props;
-
-   LoginAction({username: 'akatsaris@gmail.com', pass: '948171', loginStatus: true})
+    this.loading(true);
+    LoginAction({username: 'akatsaris@gmail.com', pass: '948171', loginStatus: true})
   };
 
   render() {
@@ -112,6 +121,11 @@ class Login extends Component {
                 onClick={this.changeLoginStatus}
               >Login</Button>
               <Link to="/login/resetpass">reset pass</Link>
+              <div>
+              {
+                this.state.loading && ("Loading...")
+              }
+              </div>
             </form>
           </Paper>
         </main>
