@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { LogoutAction } from "../../store/actions";
+import { LogoutAction } from "../../store/reducers/loginReducer";
 import "./css/module.css";
 
 class Dashboard extends Component {

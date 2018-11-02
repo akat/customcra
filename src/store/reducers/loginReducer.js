@@ -1,3 +1,13 @@
+export const LoginAction = (payload) => ({
+  type: "LOGIN",
+  payload
+});
+
+export const LogoutAction = (payload) => ({
+  type: "LOGOUT",
+  payload
+});
+
 const initialState = {
   loginStatus: false
 }
@@ -18,3 +28,8 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export const LOGIN_ACTIONS = {
+  LOGIN: "LOGIN",
+  LOGOUT: "LOGOUT"
+}

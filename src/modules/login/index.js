@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { LoginAction } from "../../store/actions";
+import { LoginAction } from "../../store/reducers/loginReducer";
 import { Link } from 'react-router-dom';
 import { loginCheck } from './api'
 
