@@ -1,35 +1,25 @@
-export const LoginAction = (payload) => ({
-  type: "LOGIN",
-  payload
-});
-
-export const LogoutAction = (payload) => ({
-  type: "LOGOUT",
-  payload
-});
+import { handleActions } from 'redux-actions';
+import user from '../actions/loginActions'
 
 const initialState = {
   loginStatus: false
 }
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case "LOGIN":
-      return {
-        ...state,
-        ...action.payload
-      }
-    case "LOGOUT":
-      return {
-        ...state,
-        loginStatus: false
-      }
-    default:
-      return state;
+const login = (state, action) => {
+  return {
+    ...state,
+    ...action.payload
   }
 };
 
-export const LOGIN_ACTIONS = {
-  LOGIN: "LOGIN",
-  LOGOUT: "LOGOUT"
+const logout = (state, action) => {
+  return {
+    loginStatus: false
+  }
 }
+
+
+export default handleActions({
+  [user.LoginAction]: login,
+  [user.LogoutAction]: logout
+}, initialState);

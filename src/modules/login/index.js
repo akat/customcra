@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { LoginAction } from "../../store/reducers/loginReducer";
+import { LoginActionAsync } from "../../store/actions/loginActions";
 import { Link } from 'react-router-dom';
-import { loginCheck } from './api'
 
 import "./css/module.css";
 import {
@@ -58,18 +57,18 @@ class Login extends Component {
     module: "Login"
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    const {history, loginStatus } = this.props;
+    if(loginStatus){
+      history.push('/')
+    }
+  }
+
   changeLoginStatus = event => {
     event.preventDefault()
-    const { LoginAction, history } = this.props;
+    const { LoginAction } = this.props;
 
-    loginCheck({ username: 'akatsaris@gmail.com', pass: '948171'}).then((resp) => {
-      if(resp.loginStatus) {
-        LoginAction(resp);
-        history.push('/')  
-      }
-    }, (err)=> {
-      throw new Error(err);
-    })
+   LoginAction({username: 'akatsaris@gmail.com', pass: '948171', loginStatus: true})
   };
 
   render() {
@@ -126,7 +125,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  LoginAction: data => dispatch(LoginAction(data))
+  LoginAction: data => dispatch(LoginActionAsync(data))
 });
 
 export default withStyles(styles)(connect(

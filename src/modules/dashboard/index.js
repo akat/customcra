@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { LogoutAction } from "../../store/reducers/loginReducer";
+import user from "../../store/actions/loginActions";
 import "./css/module.css";
 
 class Dashboard extends Component {
@@ -28,7 +28,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  LogoutAction: () => dispatch(LogoutAction())
+  LogoutAction: () => dispatch(user.LogoutAction())
 });
 
 export default connect(
