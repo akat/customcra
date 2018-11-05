@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { LoginActionAsync } from "../../store/actions/loginActions";
 import { Link } from 'react-router-dom';
+import withLoader from "../../HOComponents/withLoader"
 
 import "./css/module.css";
 import {
@@ -54,34 +55,24 @@ const styles = theme => ({
 
 class Login extends Component {
   state = {
-    module: "Login",
-    loading: false
+    module: "Login"
   };
 
-  loading(status){
-    this.setState({
-      ...this.state,
-      loading: status
-    })
-  }
-
   componentDidUpdate(prevProps, prevState) {
-    const {history, loginStatus } = this.props;
+    const { history, loginStatus } = this.props;
     if(loginStatus){
-      this.loading(false);
       history.push('/')
     }
   }
 
-  changeLoginStatus = event => {
+  loginHandler = event => {
     event.preventDefault()
     const { LoginAction } = this.props;
-    this.loading(true);
     LoginAction({username: 'akatsaris@gmail.com', pass: '948171', loginStatus: true})
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes , isLoading } = this.props;
 
     return (
       <React.Fragment>
@@ -118,12 +109,12 @@ class Login extends Component {
                 variant="contained"
                 color="primary"
                 className={classes.submit}
-                onClick={this.changeLoginStatus}
+                onClick={this.loginHandler}
               >Login</Button>
               <Link to="/login/resetpass">reset pass</Link>
               <div>
               {
-                this.state.loading && ("Loading...")
+                isLoading && ("Loading...")
               }
               </div>
             </form>
@@ -135,7 +126,8 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.user
+  ...state.app,
+  ...state.app.user
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -145,4 +137,4 @@ const mapDispatchToProps = dispatch => ({
 export default withStyles(styles)(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login));
+)(withLoader(Login)));

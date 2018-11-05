@@ -6,12 +6,12 @@ import DefaultLayout from './layouts/DefaultLayout'
 import EmptyLayout from './layouts/EmptyLayout'
 
 //Components
-import Home from './modules/dashboard'
-import Dashboard from './modules/dashboard/routes'
-import Calendar from './modules/calendar'
-import Login from './modules/login/routes'
+import Home from './components/dashboard'
+import Dashboard from './components/dashboard/routes'
+import Calendar from './components/calendar'
+import Login from './components/login/routes'
 
-const AppRouter = ({loginStatus}) => {
+const AppRouter = ({ loginStatus }) => {
 	return (
 		<Switch>
 			<DefaultLayout path="/" exact={true} component={Home} needAuthorization checkAuth={loginStatus}/>
@@ -23,7 +23,7 @@ const AppRouter = ({loginStatus}) => {
 }
 
 const mapStateToProps = state => ({
-	...state.user
+	...state.app.user
 });
 
 export default connect(mapStateToProps)(AppRouter)

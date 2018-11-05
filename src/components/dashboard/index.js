@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import user from "../../store/actions/loginActions";
+import withLoader from "../../HOComponents/withLoader"
+
 import "./css/module.css";
 
 class Dashboard extends Component {
@@ -13,18 +15,18 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { loginStatus } = this.props;
+    const { user } = this.props;
     return (
       <div>
         <button onClick={this.changeLoginStatus}> Logout </button>
-        <h3>User {loginStatus ? ("is Connected") : ("is not Connected")}</h3>
+        <h3>User {user.loginStatus ? ("is Connected") : ("is not Connected")}</h3>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  ...state.user
+  ...state.app
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -34,4 +36,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Dashboard);
+)(withLoader(Dashboard));
