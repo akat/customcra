@@ -1,8 +1,22 @@
 import React from "react";
-import DashMainLayout from "../layouts/main"
-import Dashboard from "../index"
-import Demo1 from "../components/demo1"
-import Demo2 from "../components/demo2";
+import Loadable from "react-loadable";
+import Loading from "../../../layouts/Loading";
+import DashMainLayout from "../layouts/main";
+
+export const Dashboard = Loadable({
+	loader: () => import("../index"),
+	loading: Loading,
+});
+
+export const Demo1 = Loadable({
+	loader: () => import("../components/demo1"),
+	loading: Loading,
+});
+
+export const Demo2 = Loadable({
+	loader: () => import("../components/demo2"),
+	loading: Loading,
+});
 
 const DashboardRouter = ({match, location, history}) => {
   return (

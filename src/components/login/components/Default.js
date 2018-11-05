@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { LoginActionAsync } from "../../../store/actions/loginActions";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import withLoader from "../../../HOComponents/withLoader"
 
 import "../css/module.css";
@@ -15,11 +15,11 @@ import {
   Input,
   InputLabel,
   Paper
-} from '@material-ui/core/';
+} from "@material-ui/core/";
 
-import LockIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import withStyles from '@material-ui/core/styles/withStyles';
+import LockIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import withStyles from "@material-ui/core/styles/withStyles";
 
 const styles = theme => ({
   layout: {

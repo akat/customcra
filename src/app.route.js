@@ -1,15 +1,33 @@
-import React from 'react';
-import { Switch } from 'react-router-dom';
+import React from "react";
+import { Switch } from "react-router-dom";
 import { connect } from "react-redux";
+import Loadable from "react-loadable";
+import Loading from "./layouts/Loading";
+
 //Layouts
-import DefaultLayout from './layouts/DefaultLayout'
-import EmptyLayout from './layouts/EmptyLayout'
+import DefaultLayout from "./layouts/DefaultLayout"
+import EmptyLayout from "./layouts/EmptyLayout"
 
 //Components
-import Home from './components/dashboard'
-import Dashboard from './components/dashboard/routes'
-import Calendar from './components/calendar'
-import Login from './components/login/routes'
+export const Home = Loadable({
+	loader: () => import("./components/dashboard"),
+	loading: Loading,
+});
+
+export const Dashboard = Loadable({
+	loader: () => import("./components/dashboard/routes"),
+	loading: Loading,
+});
+
+export const Calendar = Loadable({
+	loader: () => import("./components/calendar"),
+	loading: Loading,
+});
+
+export const Login = Loadable({
+	loader: () => import("./components/login/routes"),
+	loading: Loading,
+});
 
 const AppRouter = ({ loginStatus }) => {
 	return (

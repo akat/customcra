@@ -1,7 +1,22 @@
 import React from "react";
-import LoginMainLayout from "../layouts/main"
-import Login from "../index"
-import ResetPass from "../components/ResetPass"
+import Loadable from "react-loadable";
+import Loading from "../../../layouts/Loading";
+
+export const LoginMainLayout = Loadable({
+	loader: () => import("../layouts/main"),
+	loading: Loading,
+});
+
+export const Login = Loadable({
+	loader: () => import("../index"),
+	loading: Loading,
+});
+
+export const ResetPass = Loadable({
+	loader: () => import("../components/ResetPass"),
+	loading: Loading,
+});
+
 
 const LoginRouter = ({match, location, history}) => {
   return (

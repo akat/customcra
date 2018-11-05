@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../css/module.css";
 
 class ResetPass extends Component {
   state = {

@@ -30,3 +30,27 @@
     transform: rotate(360deg);
   }
 }
+
+h1,
+h4 {
+  text-align: center;
+}
+
+.main {
+  width: 70%;
+  margin: 0px auto 0px auto;
+}
+
+.main-anchor {
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+nav {
+  display: block;
+  width: 70%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
