@@ -2,13 +2,17 @@ import { handleActions } from 'redux-actions';
 import user from '../actions/loginActions'
 
 const initialState = {
-  user: {
-    loginStatus: false
-  },
+  ...JSON.parse(localStorage.getItem( 'app')) || { user: { loginStatus : false }},
   isLoading: false
 }
 
 const login = (state, action) => {
+  localStorage.setItem( 'app', JSON.stringify({
+    user: {
+      ...action.payload
+    }
+  }));
+
   return {
     ...state,
     user: {
@@ -18,6 +22,7 @@ const login = (state, action) => {
 };
 
 const logout = (state, action) => {
+  localStorage.removeItem('app');
   return {
     user: { 
       loginStatus: false
