@@ -55,7 +55,9 @@ const styles = theme => ({
 
 class Login extends Component {
   state = {
-    module: "Login"
+    module: "Login",
+    email: null,
+    pass: null
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -67,9 +69,17 @@ class Login extends Component {
 
   loginHandler = event => {
     event.preventDefault()
+    const { email, pass } = this.state;
     const { LoginAction } = this.props;
-    LoginAction({username: 'akatsaris@gmail.com', pass: '948171', loginStatus: true})
+    LoginAction({username: email, pass: pass, loginStatus: true})
   };
+
+  handleChange = event => {
+    this.setState({
+      ...this.state,
+      [event.target.name]: event.target.value
+    });
+  }
 
   render() {
     const { classes , isLoading } = this.props;
@@ -88,15 +98,16 @@ class Login extends Component {
             <form className={classes.form}>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="email">Email Address</InputLabel>
-                <Input id="email" name="email" autoComplete="email" autoFocus />
+                <Input id="email" name="email" autoComplete="email" onChange={this.handleChange} autoFocus />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="password">Password</InputLabel>
                 <Input
-                  name="password"
+                  name="pass"
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={this.handleChange}
                 />
               </FormControl>
               <FormControlLabel
