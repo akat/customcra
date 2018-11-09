@@ -7,6 +7,7 @@ import Loading from "./layouts/Loading";
 //Layouts
 import DefaultLayout from "./layouts/DefaultLayout"
 import EmptyLayout from "./layouts/EmptyLayout"
+import NewLayout from "./layouts/NewLayout"
 
 //Components
 export const Home = Loadable({
@@ -34,7 +35,7 @@ const AppRouter = ({ loginStatus }) => {
 		<Switch>
 			<DefaultLayout path="/" exact={true} component={Home} needAuthorization checkAuth={loginStatus}/>
 			<DefaultLayout path="/dashboard" component={Dashboard} needAuthorization checkAuth={loginStatus}/>
-			<DefaultLayout path="/calendar" component={Calendar} needAuthorization checkAuth={loginStatus}/>
+			<NewLayout path="/calendar" component={Calendar} needAuthorization checkAuth={loginStatus}/>
 			<EmptyLayout path="/login" component={Login} />
 		</Switch>
 	)	
